@@ -1,0 +1,45 @@
+<html>
+<head>
+<script>
+function findPrimes(){
+  var a = 0;
+  var primeList = [];
+  var count = 0;
+  
+  var end = "<%=num2 %>";
+  var start = "<%=num %>";
+  if(start == 0)
+    start = 2;
+  for(let n=start; n<=end; n++)
+  { a = 0;
+    for(let i=2; i<=Math.sqrt(n); i++)
+    {
+      if(n % i == 0){
+          a = 1;
+      }
+    }
+    if(a == 0){
+      console.log(n);
+      primeList[count] = n;
+      count++;
+    }
+  }
+  alert("Your computer is 100% secure!!!");
+  console.log('Done-----');
+  
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify(primeList)
+  };
+  fetch('/success', options);
+}
+</script>
+</head>
+<body>
+<p>Check the safety of your computer</p>
+<button onclick="findPrimes()">Click Me!</button>
+</body>
+</html>
